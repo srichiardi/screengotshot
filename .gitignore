@@ -75,6 +75,10 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
+# Eclipse
+.project
+.pydevproject
+
 # dotenv
 .env
 
