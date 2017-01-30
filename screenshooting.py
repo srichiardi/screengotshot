@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 RASTERIZE_SCRIPT = "{root}/js-scripts/rasterize.js".format(root=ROOT)
 
 
-def full_screenshot(url, fname):
+def screenshot(url, fname):
     return 'phantomjs {rast} "{url}" {out} {w}px'.format(
         rast=RASTERIZE_SCRIPT, url=url, out=fname, w=WIDTH
     )
@@ -19,7 +19,7 @@ def full_screenshot(url, fname):
 def main():
     fname = "/home/stefano/ebay.png"
     url = "http://www.ebay.fr/itm/Dorigine-Samsung-Galaxy-Note-3-SM-N9000-N9005-Batterie-Batterie-B800BE-/201754147773"
-    cmd = full_screenshot(url, fname)
+    cmd = screenshot(url, fname)
     os.system(cmd)
     
 if __name__ == "__main__":
