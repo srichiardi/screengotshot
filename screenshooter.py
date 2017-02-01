@@ -108,4 +108,5 @@ class ScreenShooterGui(Tk):
     def mainloop(self):
         Tk.mainloop(self)
 
-ScreenShooterGui().mainloop()
+if __name__ == "__main__":
+    ScreenShooterGui().mainloop()
