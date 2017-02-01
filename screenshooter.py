@@ -3,6 +3,7 @@ import tkFileDialog
 from ttk import Progressbar
 import time
 import os
+from modules.imagipy import add_url_time
 
 
 def screenshot(url, fname):
@@ -91,6 +92,7 @@ class ScreenShooterGui(Tk):
             fileName = url.split("/")[2] + ".png"
             output = self.outputFieldEntry.get() + "/" + fileName
             screenshot(url, output)
+            add_url_time(url, output)
             self.status.step(stepAmount)
             self.update()
 
