@@ -89,8 +89,16 @@ class ScreenShooterGui(Tk):
         stepAmount = 100 / len(listOfUrls)
         for url in listOfUrls:
             url = url.strip()
-            fileName = url.split("/")[2] + ".png"
-            output = self.outputFieldEntry.get() + "/" + fileName
+            # dirty solution to find ebay items ids
+            item_ids = re.findall(r'\/\d+\?', url, re.I)
+            if len(item_ids) > 0:
+                output = '{root_path}/{url_base}_eBayItem-{item}.png'.format(
+                        root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2],
+                        item=str(item_ids[0][1:-1]) )
+            else:
+                output = '{root_path}/{url_base}.png'.format(
+                        root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2] )
+            
             screenshot(url, output)
             add_url_time(url, output)
             self.status.step(stepAmount)
