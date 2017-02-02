@@ -21,7 +21,7 @@ class ScreenShooterGui(Tk):
     def __init__(self):
         Tk.__init__(self)
         self.title("WebSite ScreenShooter")
-        self.geometry("390x360")
+        self.geometry("390x420")
 
         self.mainFrame = Frame(self)
         self.mainFrame.pack(pady=5, padx=5)
