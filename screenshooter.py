@@ -87,10 +87,10 @@ class ScreenShooterGui(Tk):
         # creating a list ignoring empty values
         listOfUrls = [x for x in textUrls.split("\n") if x]
         stepAmount = 100 / len(listOfUrls)
-        for url in listOfUrls:
+        for i, url in enumerate(listOfUrls):
             url = url.strip()
             # dirty solution to find ebay items ids
-            item_ids = re.findall(r'\/\d+\?', url, re.I)
+            item_ids = re.findall(r'\/[1-4]\d{10,12}', url, re.I)
             if len(item_ids) > 0:
                 output = '{root_path}/{url_base}_eBayItem-{item}.png'.format(
                         root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2],
@@ -98,6 +98,11 @@ class ScreenShooterGui(Tk):
             else:
                 output = '{root_path}/{url_base}.png'.format(
                         root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2] )
+            
+            # check if file already exists:
+            if os.path.isfile(output):
+                file_ver = '-v{ver}.png'.format(ver=i)
+                output = re.sub(r'\.png$', file_ver, output)
             
             screenshot(url, output)
             add_url_time(url, output)
