@@ -39,7 +39,7 @@ def add_url_time(url, original_image_path):
         draw.text((5, offset), line, "black", font=font)
         offset += CHAR_PX_H + LINE_SPACE
     
-    timestamp = "This image was taken on " + time.strftime("%d.%m.%Y at %H:%M:%S") + " by React Ireland ltd"
+    timestamp = "Image taken on " + time.strftime("%d.%m.%Y at %H:%M:%S", time.gmtime()) + " GMT +0"
     
     draw.text((5, height + hdr_height + 5), timestamp, "black", font=font)
     
