@@ -94,7 +94,7 @@ class ScreenShooterGui(Tk):
             if len(item_ids) > 0:
                 output = '{root_path}/{url_base}_eBayItem-{item}.png'.format(
                         root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2],
-                        item=str(item_ids[0][1:-1]) )
+                        item=str(item_ids[0][1:]) )
             else:
                 output = '{root_path}/{url_base}.png'.format(
                         root_path=self.outputFieldEntry.get(), url_base=url.split("/")[2] )
